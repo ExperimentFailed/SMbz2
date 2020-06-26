@@ -31,5 +31,6 @@ install:
   - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/metamod-source.git .
 
 script:
-- cd $HOME
+- cd $HOME/sourcemod/extensions/SMbz2
+- ls
 - make
