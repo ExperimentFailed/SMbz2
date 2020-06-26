@@ -21,7 +21,7 @@ PROJECT = smbz2
 #Uncomment for Metamod: Source enabled extension
 #USEMETA = true
 
-OBJECTS = sdk/smsdk_ext.cpp extension.cpp BZThread.cpp
+OBJECTS = smsdk_ext.cpp extension.cpp BZThread.cpp
 
 OBJECTS += bzip2/blocksort.c bzip2/bzip2recover.c bzip2/bzlib.c
 OBJECTS += bzip2/compress.c bzip2/crctable.c bzip2/decompress.c
