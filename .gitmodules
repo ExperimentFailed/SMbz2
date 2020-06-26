@@ -1,0 +1,3 @@
+[submodule "bzip2"]
+	path = bzip2
+	url = https://github.com/Versatile-BFG/bzip2-mirror.git
