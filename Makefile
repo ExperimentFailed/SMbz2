@@ -10,7 +10,7 @@ HL2SDK_OB = $(FORBUILD)/hl2sdk-ob
 HL2SDK_OB_VALVE = $(FORBUILD)/hl2sdk-ob-valve
 HL2SDK_L4D = $(FORBUILD)/hl2sdk-l4d
 HL2SDK_L4D2 = $(FORBUILD)/hl2sdk-l4d2
-MMSOURCE18 = $(FORBUILD)/mmsource-1.8
+MMSOURCE = $(FORBUILD)/mmsource-1.10
 
 #####################################
 ### EDIT BELOW FOR OTHER PROJECTS ###
@@ -84,10 +84,10 @@ HL2PUB = $(HL2SDK)/public
 
 ifeq "$(ENGINE)" "original"
 	INCLUDE += -I$(HL2SDK)/public/dlls
-	METAMOD = $(MMSOURCE19)/core-legacy
+	METAMOD = $(MMSOURCE)/core-legacy
 else
 	INCLUDE += -I$(HL2SDK)/public/game/server
-	METAMOD = $(MMSOURCE19)/core
+	METAMOD = $(MMSOURCE)/core
 endif
 
 OS := $(shell uname -s)
@@ -208,7 +208,7 @@ $(BIN_DIR)/%.o: %.cpp
 
 all: check
 	mkdir -p $(BIN_DIR)
-	ln -sf ../smsdk_ext.cpp
+	#ln -sf ../smsdk_ext.cpp
 	if [ "$(USEMETA)" = "true" ]; then \
 		ln -sf $(HL2LIB)/$(LIB_PREFIX)vstdlib$(LIB_SUFFIX); \
 		ln -sf $(HL2LIB)/$(LIB_PREFIX)tier0$(LIB_SUFFIX); \
