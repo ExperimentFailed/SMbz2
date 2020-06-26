@@ -1,10 +1,13 @@
 # Travis-CI config
 
 language: cpp
+sudo: required
+dist: trusty
 compiler:
   - gcc
   - clang
-
+os:
+- linux
 branches:
   only:
     - master
@@ -29,4 +32,4 @@ install:
 
 script:
 - cd $HOME/sourcemod/extensions/SMbz2
-make
+- make
