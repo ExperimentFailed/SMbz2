@@ -1,10 +1,10 @@
 # (C)2004-2010 SourceMod Development Team
 # Makefile written by David "BAILOPAN" Anderson
 
-FORBUILD = ../../forBuild
+FORBUILD = $${HOME}
 
 SRCDS_BASE = ../../../srcds
-SMSDK = $(FORBUILD)/sourcemod-1-3-6
+SMSDK = $(FORBUILD)/sourcemod
 HL2SDK_ORIG = $(FORBUILD)/hl2sdk
 HL2SDK_OB = $(FORBUILD)/hl2sdk-ob
 HL2SDK_OB_VALVE = $(FORBUILD)/hl2sdk-ob-valve
