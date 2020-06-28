@@ -135,7 +135,7 @@ LINK += -m32 -lm -ldl
 CFLAGS += -DPOSIX -Dstricmp=strcasecmp -D_stricmp=strcasecmp -D_strnicmp=strncasecmp -Dstrnicmp=strncasecmp \
 	-D_snprintf=snprintf -D_vsnprintf=vsnprintf -D_alloca=alloca -Dstrcmpi=strcasecmp -DCOMPILER_GCC -Wall -Werror \
 	-Wno-overloaded-virtual -Wno-switch -Wno-unused -msse -DSOURCEMOD_BUILD -DHAVE_STDINT_H -m32
-CPPFLAGS += -Wno-non-virtual-dtor -fno-exceptions -fno-rtti -std=c++14
+CPPFLAGS += -Wno-non-virtual-dtor -fno-exceptions -fno-rtti -std=c++1y
 
 ################################################
 ### DO NOT EDIT BELOW HERE FOR MOST PROJECTS ###
