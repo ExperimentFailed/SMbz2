@@ -10,7 +10,7 @@ HL2SDK_OB = $(FORBUILD)/hl2sdk-ob
 HL2SDK_OB_VALVE = $(FORBUILD)/hl2sdk-ob-valve
 HL2SDK_L4D = $(FORBUILD)/hl2sdk-l4d
 HL2SDK_L4D2 = $(FORBUILD)/hl2sdk-l4d2
-MMSOURCE = $(FORBUILD)/mmsource-1.10
+MMSOURCE = $(FORBUILD)/metamod-source
 
 #####################################
 ### EDIT BELOW FOR OTHER PROJECTS ###
@@ -27,6 +27,7 @@ OBJECTS += bzip2/blocksort.c bzip2/bzip2recover.c bzip2/bzlib.c
 OBJECTS += bzip2/compress.c bzip2/crctable.c bzip2/decompress.c
 OBJECTS += bzip2/huffman.c bzip2/randtable.c
 
+INCLUDE += -I$(MMSOURCE)/core -I$(MMSOURCE)/core/sourcehook
 INCLUDE += -I$(SMSDK)/public -I$(SMSDK)/public/amtl  -I$(SMSDK)/public/amtl/amtl -I$(SMSDK)/sourcepawn/include -I$(SMSDK)/core -I$(CURL)/include -I$(SMSDK)/public/sourcepawn
 
 ##############################################
@@ -123,7 +124,7 @@ ifeq "$(USEMETA)" "true"
 	LINK += $(LINK_HL2)
 
 	INCLUDE += -I$(HL2PUB) -I$(HL2PUB)/engine -I$(HL2PUB)/tier0 -I$(HL2PUB)/tier1 -I$(METAMOD) \
-		-I$(METAMOD)/sourcehook 
+		-I$(METAMOD)/sourcehook
 	CFLAGS += -DSE_EPISODEONE=1 -DSE_DARKMESSIAH=2 -DSE_ORANGEBOX=3 -DSE_BLOODYGOODTIME=4 -DSE_EYE=5 \
 		-DSE_CSS=6 -DSE_ORANGEBOXVALVE=7 -DSE_LEFT4DEAD=8 -DSE_LEFT4DEAD2=9 -DSE_ALIENSWARM=10 \
 		-DSE_PORTAL2=11 -DSE_CSGO=12
@@ -134,7 +135,7 @@ LINK += -m32 -lm -ldl
 CFLAGS += -DPOSIX -Dstricmp=strcasecmp -D_stricmp=strcasecmp -D_strnicmp=strncasecmp -Dstrnicmp=strncasecmp \
 	-D_snprintf=snprintf -D_vsnprintf=vsnprintf -D_alloca=alloca -Dstrcmpi=strcasecmp -DCOMPILER_GCC -Wall -Werror \
 	-Wno-overloaded-virtual -Wno-switch -Wno-unused -msse -DSOURCEMOD_BUILD -DHAVE_STDINT_H -m32
-CPPFLAGS += -Wno-non-virtual-dtor -fno-exceptions -fno-rtti -std=c++11
+CPPFLAGS += -Wno-non-virtual-dtor -fno-exceptions -fno-rtti -std=c++14
 
 ################################################
 ### DO NOT EDIT BELOW HERE FOR MOST PROJECTS ###
@@ -208,7 +209,7 @@ $(BIN_DIR)/%.o: %.cpp
 
 all: check
 	mkdir -p $(BIN_DIR)
-	ln -sf ../smsdk_ext.cpp
+	+ln -sf ../smsdk_ext.cpp
 	if [ "$(USEMETA)" = "true" ]; then \
 		ln -sf $(HL2LIB)/$(LIB_PREFIX)vstdlib$(LIB_SUFFIX); \
 		ln -sf $(HL2LIB)/$(LIB_PREFIX)tier0$(LIB_SUFFIX); \
