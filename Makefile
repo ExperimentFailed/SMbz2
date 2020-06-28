@@ -27,7 +27,7 @@ OBJECTS += bzip2/blocksort.c bzip2/bzip2recover.c bzip2/bzlib.c
 OBJECTS += bzip2/compress.c bzip2/crctable.c bzip2/decompress.c
 OBJECTS += bzip2/huffman.c bzip2/randtable.c
 
-INCLUDE += -I$(SMSDK)/core -I./
+INCLUDE += -I$(SMSDK)/public -I$(SMSDK)/public/amtl  -I$(SMSDK)/public/amtl/amtl -I$(SMSDK)/sourcepawn/include -I$(SMSDK)/core -I$(CURL)/include -I$(SMSDK)/public/sourcepawn
 
 ##############################################
 ### CONFIGURE ANY OTHER FLAGS/OPTIONS HERE ###
