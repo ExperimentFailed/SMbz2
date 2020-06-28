@@ -28,7 +28,7 @@ OBJECTS += bzip2/compress.c bzip2/crctable.c bzip2/decompress.c
 OBJECTS += bzip2/huffman.c bzip2/randtable.c
 
 INCLUDE += -I$(MMSOURCE)/core -I$(MMSOURCE)/core/sourcehook
-INCLUDE += -I$(SMSDK)/public -I$(SMSDK)/public/amtl  -I$(SMSDK)/public/amtl/amtl -I$(SMSDK)/sourcepawn/include -I$(SMSDK)/core -I$(CURL)/include -I$(SMSDK)/public/sourcepawn
+INCLUDE += -I$(SMSDK)/public -I$(SMSDK)/public/amtl  -I$(SMSDK)/public/amtl/amtl -I$(SMSDK)/sourcepawn -I$(SMSDK)/sourcepawn/include -I$(SMSDK)/core
 
 ##############################################
 ### CONFIGURE ANY OTHER FLAGS/OPTIONS HERE ###
