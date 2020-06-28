@@ -26,12 +26,12 @@ before_install:
 install:
   - cd $HOME/sourcemod
   - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/sourcemod.git .
-  - cp -r $TRAVIS_BUILD_DIR $HOME/sourcemod/extensions/
+  - cp -r $TRAVIS_BUILD_DIR $HOME/
   - cd $HOME/metamod-source
   - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/metamod-source.git .
   - ls
 
 script:
-- cd $HOME/sourcemod/extensions/SMbz2
+- cd $HOME/SMbz2
 - ls
 - make
