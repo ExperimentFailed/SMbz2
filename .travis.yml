@@ -25,9 +25,12 @@ before_install:
 
 install:
   - cd $HOME/sourcemod
+  - ls
   - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/sourcemod.git .
+  - ls
   - cp -r $TRAVIS_BUILD_DIR $HOME/
   - cd $HOME/metamod-source
+  - ls
   - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/metamod-source.git .
   - ls
 

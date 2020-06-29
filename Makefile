@@ -1,7 +1,7 @@
 # (C)2004-2010 SourceMod Development Team
 # Makefile written by David "BAILOPAN" Anderson
 
-FORBUILD = $${HOME}
+FORBUILD = ${HOME}
 
 SRCDS_BASE = ../../../srcds
 SMSDK = $(FORBUILD)/sourcemod
