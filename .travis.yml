@@ -36,3 +36,16 @@ script:
 - cd $HOME/SMbz2
 - ls
 - make
+- cd Release
+- mkdir build
+- mv smbz2.ext.so build
+- tar czvf SMbz2-${TRAVIS_TAG}-linux.tar.gz build
+
+deploy:
+  provider: releases
+  api_key: ${GH_DEPLOYTOKEN}
+  file_glob: true
+  file: "SMbz2-${TRAVIS_TAG}-linux.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: true
