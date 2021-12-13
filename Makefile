@@ -27,8 +27,13 @@ OBJECTS += bzip2/blocksort.c bzip2/bzip2recover.c bzip2/bzlib.c
 OBJECTS += bzip2/compress.c bzip2/crctable.c bzip2/decompress.c
 OBJECTS += bzip2/huffman.c bzip2/randtable.c
 
-INCLUDE += -I$(MMSOURCE)/core -I$(MMSOURCE)/core/sourcehook
-INCLUDE += -I$(SMSDK)/public -I$(SMSDK)/public/amtl  -I$(SMSDK)/public/amtl/amtl -I$(SMSDK)/sourcepawn -I$(SMSDK)/sourcepawn/include -I$(SMSDK)/core
+METAMOD = $(MMSOURCE19)/core
+
+INCLUDE += -I. -I.. -Isdk -I../ \
+	-I$(METAMOD)/sourcehook -I$(SMSDK)/public -I$(SMSDK)/public/extensions \
+	-I$(SMSDK)/sourcepawn/include \
+	-I$(SMSDK)/public/amtl/amtl \
+	-I$(SMSDK)/public/amtl \
 
 ##############################################
 ### CONFIGURE ANY OTHER FLAGS/OPTIONS HERE ###
