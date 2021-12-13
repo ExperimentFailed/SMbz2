@@ -31,6 +31,7 @@ METAMOD = $(MMSOURCE19)/core
 
 INCLUDE += -I. -I.. -Isdk -I../ \
 	-I$(METAMOD)/sourcehook -I$(SMSDK)/public -I$(SMSDK)/public/extensions \
+	-I$(SMSDK)/core \
 	-I$(SMSDK)/sourcepawn/include \
 	-I$(SMSDK)/public/amtl/amtl \
 	-I$(SMSDK)/public/amtl \
