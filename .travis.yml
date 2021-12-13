@@ -1,20 +1,12 @@
 # Travis-CI config
 
 language: cpp
-sudo: required
 dist: trusty
 compiler:
   - clang
 os:
   - linux
-branches:
-  only:
-    - master
-
-# Use IRC notifications instead of email
-notifications:
-  email: false
-
+  
 before_install:
   - echo $TRAVIS_BUILD_DIR
   - sudo apt-get install g++-multilib lib32z1-dev
