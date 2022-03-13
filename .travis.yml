@@ -1,40 +1,43 @@
 # Travis-CI config
 
 language: cpp
-sudo: required
 dist: trusty
 compiler:
-  - gcc
   - clang
 os:
   - linux
-branches:
-  only:
-    - master
-
-# Use IRC notifications instead of email
-notifications:
-  email: false
-
+  
 before_install:
   - echo $TRAVIS_BUILD_DIR
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq g++ gcc-multilib g++-multilib libc6-dev-i386 lib32stdc++6 lib32z1-dev
+  - sudo apt-get install g++-multilib lib32z1-dev
   - mkdir $HOME/sourcemod
   - mkdir $HOME/metamod-source
 
 install:
   - cd $HOME/sourcemod
   - ls
-  - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/sourcemod.git .
+  - git clone --depth 1 --recurse-submodules -j8 --shallow-submodules -b 1.10-dev https://github.com/alliedmodders/sourcemod.git .
   - ls
   - cp -r $TRAVIS_BUILD_DIR $HOME/
   - cd $HOME/metamod-source
   - ls
-  - git clone -b 1.10-dev --single-branch https://github.com/alliedmodders/metamod-source.git .
+  - git clone --depth 1 --recurse-submodules -j8 --shallow-submodules -b 1.11-dev https://github.com/alliedmodders/metamod-source.git .
   - ls
 
 script:
 - cd $HOME/SMbz2
 - ls
 - make
+- cd Release
+- mkdir build
+- mv smbz2.ext.so build
+- tar czvf SMbz2-${TRAVIS_TAG}-linux.tar.gz build
+
+deploy:
+  provider: releases
+  api_key: ${GH_DEPLOYTOKEN}
+  file_glob: true
+  file: "SMbz2-${TRAVIS_TAG}-linux.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: true

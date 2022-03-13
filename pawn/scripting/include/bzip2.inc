@@ -4,32 +4,32 @@
 #define _bzip2_included
 
 enum BZ_Error {
-	BZ_OK				= 0,
-	BZ_RUN_OK			= 1,
-	BZ_FLUSH_OK			= 2,
-	BZ_FINISH_OK		= 3,
-	BZ_STREAM_END		= 4,
-	BZ_SEQUENCE_ERROR	= -1,
-	BZ_PARAM_ERROR		= -2,
-	BZ_MEM_ERROR		= -3,
-	BZ_DATA_ERROR		= -4,
-	BZ_DATA_ERROR_MAGIC	= -5,
-	BZ_IO_ERROR			= -6,
-	BZ_UNEXPECTED_EOF	= -7,
-	BZ_OUTBUFF_FULL		= -8,
-	BZ_CONFIG_ERROR		= -9,
-	BZ_IO_ERROR_INPUT	= -101,
-	BZ_IO_ERROR_OUTPUT	= -102,
+	BZ_OK                = 0,
+	BZ_RUN_OK            = 1,
+	BZ_FLUSH_OK            = 2,
+	BZ_FINISH_OK        = 3,
+	BZ_STREAM_END        = 4,
+	BZ_SEQUENCE_ERROR    = -1,
+	BZ_PARAM_ERROR        = -2,
+	BZ_MEM_ERROR        = -3,
+	BZ_DATA_ERROR        = -4,
+	BZ_DATA_ERROR_MAGIC    = -5,
+	BZ_IO_ERROR            = -6,
+	BZ_UNEXPECTED_EOF    = -7,
+	BZ_OUTBUFF_FULL        = -8,
+	BZ_CONFIG_ERROR        = -9,
+	BZ_IO_ERROR_INPUT    = -101,
+	BZ_IO_ERROR_OUTPUT    = -102,
 }
 
-funcenum BZ2Callback {
-  public(BZ_Error:iError, String:inFile[], String:outFile[], any:data)
+typeset BZ2Callback {
+  function void (BZ_Error iError, char[] inFile, char[] outFile, any data);
 };
 
-native BZ2_DecompressFile(String:inFile[], String:outFile[], BZ2Callback:cb, any:data = 0);
-native BZ2_CompressFile(String:inFile[], String:outFile[], iCompressionLevel, BZ2Callback:cb, any:data = 0);
+native BZ2_DecompressFile(char[] inFile, char[] outFile, BZ2Callback cb, any data = 0);
+native BZ2_CompressFile(char[] inFile, char[] outFile, int iCompressionLevel, BZ2Callback cb, any data = 0);
 
-stock BZ2_Error(BZ_Error:iError, String:sError[], iErrorStringLength) {
+stock BZ2_Error(BZ_Error iError, char[] sError, int iErrorStringLength) {
 	switch(iError) {
 		case BZ_OK: strcopy(sError, iErrorStringLength, "BZ_OK");
 		case BZ_RUN_OK: strcopy(sError, iErrorStringLength, "BZ_RUN_OK");
@@ -50,8 +50,8 @@ stock BZ2_Error(BZ_Error:iError, String:sError[], iErrorStringLength) {
 	}
 }
 
-stock LogBZ2Error(BZ_Error:iError, const String:sSuffix[] = "") {
-	new String:sError[255];
+stock LogBZ2Error(BZ_Error iError, const char[] sSuffix = "") {
+	char sError[255];
 	BZ2_Error(iError, sError, sizeof(sError));
 	LogError("bzip2 Error: %s %s", sError, sSuffix);
 }
@@ -59,7 +59,7 @@ stock LogBZ2Error(BZ_Error:iError, const String:sSuffix[] = "") {
 /**
  * Do not edit below this line!
  */
-public Extension:__ext_bzip2 =
+public Extension __ext_bzip2 =
 {
 	name = "SMbz2",
 	file = "smbz2.ext",
