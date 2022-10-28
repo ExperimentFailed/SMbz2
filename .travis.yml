@@ -15,18 +15,13 @@ before_install:
 
 install:
   - cd $HOME/sourcemod
-  - ls
-  - git clone --depth 1 --recurse-submodules -j8 --shallow-submodules -b 1.10-dev https://github.com/alliedmodders/sourcemod.git .
-  - ls
+  - git clone -b 1.10-dev --recursive https://github.com/alliedmodders/sourcemod.git .
   - cp -r $TRAVIS_BUILD_DIR $HOME/
   - cd $HOME/metamod-source
-  - ls
-  - git clone --depth 1 --recurse-submodules -j8 --shallow-submodules -b 1.11-dev https://github.com/alliedmodders/metamod-source.git .
-  - ls
+  - git clone -b 1.11-dev --recursive https://github.com/alliedmodders/metamod-source.git .
 
 script:
 - cd $HOME/SMbz2
-- ls
 - make
 - cd Release
 - mkdir build
